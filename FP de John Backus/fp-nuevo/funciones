@@ -1,0 +1,55 @@
+## Iota
+Def iota = funrec o [id, ~<>]
+Def funrec = < o [1, ~1] -> 2; funrec o [-o[1, ~1], apndl]
+
+## Factorial
+Def ! = eq0 -> ~1;*o[id, ! o sub1]
+Def eq0 = eq o [id, ~0]
+Def sub1 = - o [id, ~1]
+
+## 1 a) Maximo dos numeros
+Def mayor = > -> 1; 2
+
+## 1 b) Maximo de secuencia
+Def max = /mayor
+
+## 1 c) Primer atomo de secuencia
+Def auxev = null o 1 -> 2; apndl
+Def ev = (/auxev) o apndr o [id, ~<>]
+Def primatom = 1 o ev o @ (atom -> id; ~<>)
+
+## 1 d) minimax (minimo entre maximos por fila)
+Def menor = < -> 1; 2
+Def min = /menor
+Def minimax = min o @ max
+
+## 2 a) Pertenecia de un elemento a una secuencia 
+Def pert = null o 2 -> ~F; (/or) o (@ eq) o distl
+
+## 2 b) Si una secuencia tiene longitud uno
+Def tienelong1 = eq o [length, ~1]
+
+## 2 c) Es cantidad par de atomos en una secuencia
+Def auxiota = (> o [1, 2] -> 3; auxiota o [+ o [1, ~1], 2, apndr o [3, 1]])
+Def iota = auxiota o [~1, id, ~<>]
+Def espar = eq o [* o [length o iota o % o [id, ~2], ~2], id]
+Def unoatomos = @ (atom -> ~1; ~0)
+Def cantatom = (/+) o unoatomos
+Def escatompar = espar o cantatom
+
+## 3 a) Union entre dos secencias
+Def joinIfNotContained = pert o [1, 2] -> 2; apndl o [1, 2]
+Def join = (/joinIfNotContained) o apndr
+
+## 3 b) Interseccion entre dos secuencias
+Def auxev = null o 1 -> 2; apndl
+Def ev = (/auxev) o apndr o [id, ~<>]
+Def auxPert = pert -> 1; ~<> 
+Def intersec = ev o @ auxPert o distr
+
+## 3 c) Diferencia entre dos secuencias
+Def auxPert2 = not o pert -> 1; ~<> 
+Def diff = ev o @ auxPert o distr
+
+
+
