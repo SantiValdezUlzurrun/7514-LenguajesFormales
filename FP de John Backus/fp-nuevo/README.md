@@ -1,3 +1,5 @@
+# Funciones
+
 ### Iota
 ```py
 Def iota = funrec o [id, ~<>]
