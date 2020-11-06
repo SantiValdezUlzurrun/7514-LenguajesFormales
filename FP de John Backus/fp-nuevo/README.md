@@ -13,24 +13,24 @@ Def eq0 = eq o [id, ~0]
 Def sub1 = - o [id, ~1]
 ```
 
-### 1 a) Maximo dos numeros
+### 1 a) Máximo dos numeros
 ```py
 Def mayor = > -> 1; 2
 ```
 
-### 1 b) Maximo de secuencia
+### 1 b) Máximo de secuencia
 ```py
 Def max = /mayor
 ```
 
-### 1 c) Primer atomo de secuencia
+### 1 c) Primer átomo de secuencia
 ```py
 Def auxev = null o 1 -> 2; apndl
 Def ev = (/auxev) o apndr o [id, ~<>]
 Def primatom = 1 o ev o @ (atom -> id; ~<>)
 ```
 
-### 1 d) minimax (minimo entre maximos por fila)
+### 1 d) minimax (mínimo entre máximos por fila)
 ```py
 Def menor = < -> 1; 2
 Def min = /menor
@@ -47,7 +47,7 @@ Def pert = null o 2 -> ~F; (/or) o (@ eq) o distl
 Def tienelong1 = eq o [length, ~1]
 ```
 
-### 2 c) Es cantidad par de atomos en una secuencia
+### 2 c) Es cantidad par de átomos en una secuencia
 ```py
 Def auxiota = (> o [1, 2] -> 3; auxiota o [+ o [1, ~1], 2, apndr o [3, 1]])
 Def iota = auxiota o [~1, id, ~<>]
@@ -72,12 +72,12 @@ Def er = /(pert -> 2; apndl) o addTacho
 Def ev = /(null o 1 -> 2; apndl) o addTacho
 ```
 
-### 3 a) Union entre dos secencias
+### 3 a) Unión entre dos secuencias
 ```py
 Def union = er o /apndl o apndr
 ```
 
-### 3 b) Interseccion entre dos secuencias.
+### 3 b) Intersección entre dos secuencias.
 ```py
 Def fins = (@ (pert -> 1; ~<>)) o distr
 Def int = er o ev o fins
