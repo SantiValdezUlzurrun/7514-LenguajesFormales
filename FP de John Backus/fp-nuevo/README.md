@@ -1,17 +1,17 @@
-## Iota
+### Iota
 ```py
 Def iota = funrec o [id, ~<>]
 Def funrec = < o [1, ~1] -> 2; funrec o [-o[1, ~1], apndl]
 ```
 
-## Factorial
+### Factorial
 ```py
 Def ! = eq0 -> ~1;*o[id, ! o sub1]
 Def eq0 = eq o [id, ~0]
 Def sub1 = - o [id, ~1]
 ```
 
-## 1 a) Maximo dos numeros
+### 1 a) Maximo dos numeros
 ```py
 Def mayor = > -> 1; 2
 ```
