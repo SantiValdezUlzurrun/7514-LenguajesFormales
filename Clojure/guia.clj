@@ -128,3 +128,23 @@
 
 (defn sublist [lista inicial longitud]
   (apply list (subvec (vec lista) inicial longitud)))
+
+; 33
+(defn pangrama? [s]
+	(let [abecedario (hash-set \A \B \C \D \E \F \G \H \I \J \K \L \M \N \O \P \Q \R \S \T \U \V \W \X \Y \Z)]
+		(empty? (apply disj abecedario (clojure.string/upper-case s)))
+	)
+)
+
+; 48
+(defn palindromo? [s]
+	(let [
+			abecedario (hash-set \A \B \C \D \E \F \G \H \I \J \K \L \M \N \O \P \Q \R \S \T \U \V \W \X \Y \Z)
+			s-upper-case (clojure.string/upper-case s)
+			s-seq (seq s-upper-case)
+			s-seq-sin-acentos (replace '{\Á \A \É \E \Í \I \Ó \O \Ú \U} s-seq)
+			s-seq-solo-letras-y-numeros (filter #(contains? abecedario %) s-seq-sin-acentos)
+		]
+		(= (reverse s-seq-solo-letras-y-numeros) (seq s-seq-solo-letras-y-numeros))
+	)
+)
